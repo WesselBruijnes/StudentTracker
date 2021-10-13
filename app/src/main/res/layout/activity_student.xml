@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".StudentActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logged in"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="220dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studentRecycleView"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
