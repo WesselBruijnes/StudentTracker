@@ -15,4 +15,9 @@ public class Student {
     private List<Payment> payments;
     private List<Date>  presence;
     private ZonedDateTime createdAt;
+
+    public String getFullName() {
+        return String.format("%s %s", firstName, lastName);
+    }
+
 }
