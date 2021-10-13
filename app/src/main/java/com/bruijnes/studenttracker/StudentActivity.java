@@ -23,10 +23,10 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
 
         List<Student> students = new ArrayList<>();
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 50; i++) {
             Student x = new Student();
             x.setStudentId(i);
-            x.setFirstName("wessel");
+            x.setFirstName(i + " wessel");
             x.setLastName("bruijnes");
             students.add(x);
         }
