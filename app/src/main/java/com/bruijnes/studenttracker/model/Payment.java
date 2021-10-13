@@ -1,5 +1,12 @@
 package com.bruijnes.studenttracker.model;
 
-public class Payment {
+import java.time.ZonedDateTime;
 
+import lombok.Data;
+
+@Data
+public class Payment {
+    private double amount;
+    private ZonedDateTime dateRequested;
+    private ZonedDateTime datePaid;
 }
