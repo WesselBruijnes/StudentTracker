@@ -14,7 +14,6 @@ public class StudentInformation extends AppCompatActivity {
     private Student student;
     private TextView studentName;
     private TextView studentPhone;
-    private TextView studentDob;
     private Button   editButton;
 
     @Override
@@ -26,12 +25,10 @@ public class StudentInformation extends AppCompatActivity {
 
         studentName = findViewById(R.id.studentInfoName);
         studentPhone = findViewById(R.id.studentInfoPhone);
-        studentDob = findViewById(R.id.studentInfoDob);
         editButton = findViewById(R.id.studentInfoEditBtn);
 
-        studentName.setText(student.getFullName());
+        studentName.setText(student.fullName());
         studentPhone.setText(student.getPhoneNumber());
-        studentDob.setText(student.getDateOfBirth().toString());
 
         editButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);

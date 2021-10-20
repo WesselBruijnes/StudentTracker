@@ -1,27 +1,25 @@
 package com.bruijnes.studenttracker.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.List;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Student  implements Serializable {
-    private int studentId;
+    private String studentId;
+    @NonNull
     private String firstName;
+    @NonNull
     private String lastName;
+    @NonNull
     private String phoneNumber;
-    private LocalDate dateOfBirth;
-    private List<Payment> payments;
-    private List<Date>  presence;
-    private ZonedDateTime createdAt;
 
-    public String getFullName() {
+    public String fullName() {
         return String.format("%s %s", firstName, lastName);
     }
 

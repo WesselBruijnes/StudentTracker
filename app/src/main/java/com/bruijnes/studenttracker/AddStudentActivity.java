@@ -10,16 +10,16 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bruijnes.studenttracker.exception.StudentTrackerException;
-import com.bruijnes.studenttracker.helper.DateHelper;
 import com.bruijnes.studenttracker.model.Student;
+import com.bruijnes.studenttracker.service.StudentService;
 import com.google.android.gms.common.util.Strings;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class AddStudentActivity extends AppCompatActivity {
 
+    private StudentService studentService;
 
     private Student editStudent;
     private EditText firstName;
@@ -32,18 +32,22 @@ public class AddStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
+        studentService = new StudentService();
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         phoneNumber = findViewById(R.id.phoneNumber);
-        dateOfBirth = findViewById(R.id.dateOfBirth);
 
         setFieldsIfEdit();
 
         findViewById(R.id.saveButton).setOnClickListener(view -> {
             try {
                 validateFields();
-                Student student = editStudent == null ? createNewStudent() : editExistingStudent();
-                // TODO: Save to firebase
+                Log.i(TAG, "onCreate: " + String.valueOf(editStudent == null));
+                if (editStudent == null) {
+                    createNewStudent();
+                } else {
+                    editExistingStudent();
+                }
                 super.finish();
             } catch (StudentTrackerException e) {
                 Snackbar.make(view, Objects.requireNonNull(e.getMessage()), 3000).show();
@@ -65,36 +69,28 @@ public class AddStudentActivity extends AppCompatActivity {
             firstName.setText(editStudent.getFirstName());
             lastName.setText(editStudent.getLastName());
             phoneNumber.setText(editStudent.getPhoneNumber());
-            dateOfBirth.setText(DateHelper.toString(editStudent.getDateOfBirth()));
         }
     }
 
     private void validateFields() throws StudentTrackerException{
         if (Strings.isEmptyOrWhitespace(firstName.getText().toString()) ||
                 Strings.isEmptyOrWhitespace(lastName.getText().toString()) ||
-                Strings.isEmptyOrWhitespace(phoneNumber.getText().toString()) ||
-                Strings.isEmptyOrWhitespace(dateOfBirth.getText().toString())) {
+                Strings.isEmptyOrWhitespace(phoneNumber.getText().toString()) ) {
             throw new StudentTrackerException("Fields cannot be empty");
         }
 
     }
 
-    private Student createNewStudent() {
-         return Student.builder()
-                .firstName(firstName.getText().toString())
-                .lastName(lastName.getText().toString())
-                .phoneNumber(phoneNumber.getText().toString())
-                .dateOfBirth(DateHelper.parseDate(dateOfBirth.getText().toString()))
-                .createdAt(ZonedDateTime.now())
-                .build();
+    private void createNewStudent() {
+         Student student =  new Student(firstName.getText().toString(), lastName.getText().toString(),phoneNumber.getText().toString());
+         studentService.saveStudentToDatabase(student);
     }
 
-    private Student editExistingStudent() {
+    private void editExistingStudent() {
         editStudent.setFirstName(firstName.getText().toString());
         editStudent.setLastName(lastName.getText().toString());
-        editStudent.setDateOfBirth(DateHelper.parseDate(dateOfBirth.getText().toString()));
         editStudent.setPhoneNumber(phoneNumber.getText().toString());
-        return editStudent;
+        studentService.updateStudent(editStudent);
     }
 
 }

@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(getApplicationContext(), StudentActivity.class));
         mFirebaseAuth = FirebaseAuth.getInstance();
         requestGoogleSignIn();
         findViewById(R.id.sign_in_button).setOnClickListener(view -> signIn());
