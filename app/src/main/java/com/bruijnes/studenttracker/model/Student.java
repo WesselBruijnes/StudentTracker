@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Student  implements Serializable {
+public class Student implements Serializable {
     private String studentId;
     @NonNull
     private String firstName;

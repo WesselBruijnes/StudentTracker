@@ -19,21 +19,20 @@ public class StudentService extends FirebaseService {
 
     private static final String STUDENT_KEY = "/student/";
     private final DatabaseReference studentRef;
-    private List<Student> studentList;
+    private static final List<Student> studentList = new ArrayList<>();
 
     public StudentService() {
         super();
         studentRef = super.getDbRef(STUDENT_KEY);
-        studentList = new ArrayList<>();
 
         studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 studentList.clear();
-                for(DataSnapshot studentSnapshot : snapshot.getChildren()) {
+                for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
                     studentList.add(studentSnapshot.getValue(Student.class));
                 }
-                Log.d(TAG, "onDataChange: " +studentList.size());
+                Log.d(TAG, "onDataChange: " + studentList.size());
             }
 
             @Override
@@ -61,5 +60,9 @@ public class StudentService extends FirebaseService {
 
     public List<Student> getStudentList() {
         return studentList;
+    }
+
+    public Student findStudentById(String studentId) {
+        return studentList.stream().filter(student -> student.getStudentId().equals(studentId)).findFirst().orElse(null);
     }
 }

@@ -2,6 +2,7 @@ package com.bruijnes.studenttracker;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +26,6 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText firstName;
     private EditText lastName;
     private EditText phoneNumber;
-    private EditText dateOfBirth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class AddStudentActivity extends AppCompatActivity {
                 } else {
                     editExistingStudent();
                 }
-                super.finish();
+ ;
             } catch (StudentTrackerException e) {
                 Snackbar.make(view, Objects.requireNonNull(e.getMessage()), 3000).show();
             } catch (Exception e) {
@@ -84,6 +84,7 @@ public class AddStudentActivity extends AppCompatActivity {
     private void createNewStudent() {
          Student student =  new Student(firstName.getText().toString(), lastName.getText().toString(),phoneNumber.getText().toString());
          studentService.saveStudentToDatabase(student);
+         super.finish();
     }
 
     private void editExistingStudent() {
@@ -91,6 +92,10 @@ public class AddStudentActivity extends AppCompatActivity {
         editStudent.setLastName(lastName.getText().toString());
         editStudent.setPhoneNumber(phoneNumber.getText().toString());
         studentService.updateStudent(editStudent);
+        Intent intent = new Intent();
+        intent.putExtra("student", editStudent);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 
 }

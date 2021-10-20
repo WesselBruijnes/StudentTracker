@@ -44,7 +44,6 @@ public class StudentAdapter extends FirebaseRecyclerAdapter<Student, StudentAdap
         public StudentViewHolder(View studentView) {
             super(studentView);
             this.studentName = studentView.findViewById(R.id.studentName);
-
         }
 
     }

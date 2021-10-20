@@ -13,12 +13,9 @@ import com.bruijnes.studenttracker.service.StudentService;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 public class StudentActivity extends AppCompatActivity {
 
    private final StudentService studentService = new StudentService();
-   private final List<Student> students = studentService.getStudentList();
    private StudentAdapter studentAdapter;
 
     @Override
