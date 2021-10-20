@@ -10,7 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StudentTracker.NoActionBar">
+        android:theme="@style/Theme.StudentTracker">
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
         <activity
             android:name=".StudentInformation"
             android:exported="true" />

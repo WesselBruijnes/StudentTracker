@@ -10,4 +10,7 @@
     <string name="StudentInfo">Student Information</string>
     <string name="open_info">INFO</string>
     <string name="edit">Edit</string>
+    <string name="user_menu">User</string>
+    <string name="lesson_menu">Lesson</string>
+    <string name="payment_menu">Payment</string>
 </resources>
