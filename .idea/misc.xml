@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.5317708333333333" />
+        <entry key="app/src/main/res/drawable/ic_userAdd_background.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/activity_add_student.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.4791666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4592391304347826" />
@@ -13,6 +14,8 @@
         <entry key="app/src/main/res/layout/activity_student_information.xml" value="0.515625" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.4791666666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4791666666666667" />
+        <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.4791666666666667" />
+        <entry key="app/src/main/res/layout/fragment_user.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/student_row.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.515625" />
       </map>
