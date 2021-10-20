@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bruijnes.studenttracker.adapter.StudentAdapter;
 import com.bruijnes.studenttracker.model.Student;
 import com.bruijnes.studenttracker.service.StudentService;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -18,22 +19,36 @@ public class StudentActivity extends AppCompatActivity {
 
    private final StudentService studentService = new StudentService();
    private final List<Student> students = studentService.getStudentList();
+   private StudentAdapter studentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
 
-        StudentAdapter studentAdapter = new StudentAdapter(this, students);
         RecyclerView recyclerView = findViewById(R.id.studentRecycleView);
-        recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<Student> options = new FirebaseRecyclerOptions.Builder<Student>()
+                .setQuery(studentService.getStudentRef(), Student.class)
+                .build();
+
+        studentAdapter = new StudentAdapter(options);
+        recyclerView.setAdapter(studentAdapter);
         recyclerView.scrollToPosition(0);
         FloatingActionButton addStudentFab = findViewById(R.id.floatingActionButton);
         addStudentFab.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AddStudentActivity.class)));
-
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        studentAdapter.startListening();
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        studentAdapter.stopListening();
+    }
 }

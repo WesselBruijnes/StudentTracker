@@ -17,7 +17,7 @@ public class FirebaseService {
         dbRef = database.getReference(user.getUid());
     }
 
-    public DatabaseReference getDbRef(String key) {
+    protected DatabaseReference getDbRef(String key) {
         return dbRef.child(key);
     }
 }

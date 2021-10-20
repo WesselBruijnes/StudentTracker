@@ -1,6 +1,5 @@
 package com.bruijnes.studenttracker.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,38 +12,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bruijnes.studenttracker.R;
 import com.bruijnes.studenttracker.StudentInformation;
 import com.bruijnes.studenttracker.model.Student;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.List;
+public class StudentAdapter extends FirebaseRecyclerAdapter<Student, StudentAdapter.StudentViewHolder> {
 
-import lombok.AllArgsConstructor;
+    public StudentAdapter(@NonNull FirebaseRecyclerOptions<Student> options) {
+        super(options);
+    }
 
-@AllArgsConstructor
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
-
-    private final Context context;
-    private final List<Student> students;
+    @Override
+    protected void onBindViewHolder(@NonNull StudentViewHolder studentViewHolder, int i, @NonNull Student student) {
+        studentViewHolder.studentName.setText(student.fullName());
+        studentViewHolder.studentName.setOnClickListener(view ->  {
+            Intent intent = new Intent(view.getContext(), StudentInformation.class);
+            intent.putExtra("student", student);
+            view.getContext().startActivity(intent);
+        });
+    }
 
     @NonNull
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.student_row, parent, false);
-        return new StudentViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
-            holder.studentName.setText(students.get(position).fullName());
-        holder.studentName.setOnClickListener(view ->  {
-                Intent intent = new Intent(view.getContext(), StudentInformation.class);
-                intent.putExtra("student", students.get(position));
-                context.startActivity(intent);
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return students.size();
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = inflater.inflate(R.layout.student_row, parent, false);
+            return new StudentViewHolder(view);
     }
 
     public static class StudentViewHolder extends RecyclerView.ViewHolder {

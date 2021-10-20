@@ -43,6 +43,10 @@ public class StudentService extends FirebaseService {
         });
     }
 
+    public DatabaseReference getStudentRef() {
+        return studentRef;
+    }
+
     public void saveStudentToDatabase(Student student) {
         String userId = studentRef.push().getKey();
         student.setStudentId(userId);
