@@ -1,6 +1,7 @@
 package com.bruijnes.studenttracker.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.StudentInformation;
 import com.bruijnes.studenttracker.model.Student;
 
 import java.util.List;
@@ -32,7 +34,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
 
     @Override
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
-        holder.studentName.setText(students.get(position).getFullName());
+            holder.studentName.setText(students.get(position).getFullName());
+        holder.studentName.setOnClickListener(view ->  {
+                Intent intent = new Intent(view.getContext(), StudentInformation.class);
+                intent.putExtra("student", students.get(position));
+                context.startActivity(intent);
+        });
     }
 
     @Override
@@ -45,6 +52,9 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         public StudentViewHolder(View studentView) {
             super(studentView);
             this.studentName = studentView.findViewById(R.id.studentName);
+
+;
         }
+
     }
 }

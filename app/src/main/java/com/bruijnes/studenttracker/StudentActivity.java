@@ -14,6 +14,7 @@ import com.bruijnes.studenttracker.adapter.StudentAdapter;
 import com.bruijnes.studenttracker.model.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class StudentActivity extends AppCompatActivity {
             x.setStudentId(i);
             x.setFirstName(i + " wessel");
             x.setLastName("bruijnes");
+            x.setPhoneNumber("0681387387");
+            x.setDateOfBirth(LocalDate.of(1992, 10, 31));
+
             students.add(x);
         }
         students.forEach(student1 -> Log.d(TAG, "onCreate: " + student1.toString()));
@@ -37,7 +41,7 @@ public class StudentActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.studentRecycleView);
         recyclerView.setAdapter(studentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView.scrollToPosition(0);
         FloatingActionButton addStudentFab = findViewById(R.id.floatingActionButton);
         addStudentFab.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), AddStudentActivity.class));

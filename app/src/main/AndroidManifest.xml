@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentTracker.NoActionBar">
         <activity
-            android:name=".AddStudentActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".StudentInformation"
             android:exported="true" />
+        <activity
+            android:name=".AddStudentActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".StudentActivity"
             android:exported="true" />

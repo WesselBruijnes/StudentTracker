@@ -1,5 +1,6 @@
 package com.bruijnes.studenttracker.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -10,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Student {
+public class Student  implements Serializable {
     private int studentId;
     private String firstName;
     private String lastName;

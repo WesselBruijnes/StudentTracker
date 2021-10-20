@@ -7,6 +7,7 @@
     tools:context=".StudentActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="156dp"
         android:id="@+id/studentRecycleView"
         android:layout_width="409dp"
         android:layout_height="729dp"
