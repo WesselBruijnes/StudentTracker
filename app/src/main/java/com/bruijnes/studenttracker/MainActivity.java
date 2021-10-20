@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {                           Log.d(TAG, "signInWithCredential:success");
 
                             // Sign in success, navigate user to Profile Activity
-                            Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);                       } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(MainActivity.this, "User authentication failed", Toast.LENGTH_SHORT).show();
