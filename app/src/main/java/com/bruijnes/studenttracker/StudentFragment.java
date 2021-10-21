@@ -42,7 +42,7 @@ public class StudentFragment extends Fragment {
         studentAdapter = new StudentAdapter(options);
         recyclerView.setAdapter(studentAdapter);
         recyclerView.scrollToPosition(0);
-        FloatingActionButton addStudentFab = view.findViewById(R.id.floatingActionButton4);
+        FloatingActionButton addStudentFab = view.findViewById(R.id.addStudentFab);
         addStudentFab.setOnClickListener(fabView -> startActivity(new Intent(getContext(), AddStudentActivity.class)));
         return view;
     }
