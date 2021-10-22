@@ -1,9 +1,6 @@
 package com.bruijnes.studenttracker;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -15,6 +12,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     BottomNavigationView bottomNavigationView;
     StudentFragment studentFragment = new StudentFragment();
+    LessonFragment lessonFragment = new LessonFragment();
 
 
     @Override
@@ -32,8 +30,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.user_menu:
-                Log.d(TAG, "onNavigationItemSelected: gets hier!");
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, studentFragment).commit();
+                return true;
+            case R.id.lesson_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, lessonFragment).commit();
+                return true;
         }
         return false;
     }
