@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    private StudentService studentService;
+    private StudentService studentService = StudentService.getInstance();
 
     private Student editStudent;
     private EditText firstName;
@@ -32,7 +32,6 @@ public class AddStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
-        studentService = new StudentService();
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         phoneNumber = findViewById(R.id.phoneNumber);

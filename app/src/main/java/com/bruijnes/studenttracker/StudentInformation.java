@@ -37,7 +37,6 @@ public class StudentInformation extends AppCompatActivity {
 
         setTextviews();
 
-
         editButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), AddStudentActivity.class);
             intent.putExtra("student", student);

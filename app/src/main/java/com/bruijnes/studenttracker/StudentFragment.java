@@ -25,7 +25,7 @@ public class StudentFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private final StudentService studentService = new StudentService();
+    private final StudentService studentService = StudentService.getInstance();
     private StudentAdapter studentAdapter;
 
     @Nullable

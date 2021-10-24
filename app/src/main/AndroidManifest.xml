@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentTracker.NoActionBar">
         <activity
+            android:name=".AddLessonActivity"
+            android:exported="true" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity

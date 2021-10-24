@@ -1,6 +1,9 @@
 package com.bruijnes.studenttracker.adapter;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ public class StudentAdapter extends FirebaseRecyclerAdapter<Student, StudentAdap
 
     @Override
     protected void onBindViewHolder(@NonNull StudentViewHolder studentViewHolder, int i, @NonNull Student student) {
+        Log.d(TAG, "kaas: " +student.toString());
         studentViewHolder.studentName.setText(student.fullName());
         studentViewHolder.studentName.setOnClickListener(view ->  {
             Intent intent = new Intent(view.getContext(), StudentInformation.class);

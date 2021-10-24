@@ -2,13 +2,15 @@ package com.bruijnes.studenttracker.model;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NonNull;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lesson {
     String lessonId;
-    @NonNull
     String date;
-    List<String> studentId;
+    List<Student> student;
 }

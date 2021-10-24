@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LessonFragment extends Fragment {
 
-    private final LessonService lessonService = new LessonService();
+    private final LessonService lessonService = LessonService.getInstance();
     private LessonAdapter lessonAdapter;
 
     public LessonFragment() {
@@ -42,7 +42,19 @@ public class LessonFragment extends Fragment {
         recyclerView.setAdapter(lessonAdapter);
         recyclerView.scrollToPosition(0);
         FloatingActionButton addLessonFab = view.findViewById(R.id.addLessonFab);
-        addLessonFab.setOnClickListener(fabView -> startActivity(new Intent(getContext(), AddStudentActivity.class)));
+        addLessonFab.setOnClickListener(fabView -> startActivity(new Intent(getContext(), AddLessonActivity.class)));
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        lessonAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        lessonAdapter.stopListening();
     }
 }

@@ -17,11 +17,17 @@ import java.util.List;
 
 public class StudentService extends FirebaseService {
 
+    private static final StudentService studentService = new StudentService();
+
     private static final String STUDENT_KEY = "/student/";
     private final DatabaseReference studentRef;
-    private static final List<Student> studentList = new ArrayList<>();
+    private final List<Student> studentList = new ArrayList<>();
 
-    public StudentService() {
+    public static StudentService getInstance() {
+        return studentService;
+    }
+
+    private StudentService() {
         super();
         studentRef = super.getDbRef(STUDENT_KEY);
 
@@ -37,7 +43,7 @@ public class StudentService extends FirebaseService {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d(TAG, "onCancelled: Cancelled student event listener");
             }
         });
     }
