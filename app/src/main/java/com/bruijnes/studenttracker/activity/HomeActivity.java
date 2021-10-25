@@ -1,4 +1,4 @@
-package com.bruijnes.studenttracker;
+package com.bruijnes.studenttracker.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -6,6 +6,9 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bruijnes.studenttracker.fragment.LessonFragment;
+import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.fragment.StudentFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{

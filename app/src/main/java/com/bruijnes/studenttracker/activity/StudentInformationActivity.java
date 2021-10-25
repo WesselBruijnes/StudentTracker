@@ -1,4 +1,4 @@
-package com.bruijnes.studenttracker;
+package com.bruijnes.studenttracker.activity;
 
 import static android.content.ContentValues.TAG;
 
@@ -13,9 +13,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.helper.ActionBarHelper;
 import com.bruijnes.studenttracker.model.Student;
 
-public class StudentInformation extends AppCompatActivity {
+public class StudentInformationActivity extends AppCompatActivity {
 
     private Student student;
     private TextView studentName;
@@ -27,6 +29,8 @@ public class StudentInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_information);
+
+        ActionBarHelper.setSubtitle(this, R.string.student_detail_title);
 
         createActivityResultLauncher();
         getStudentFromIntent();

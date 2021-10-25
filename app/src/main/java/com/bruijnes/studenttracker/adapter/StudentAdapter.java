@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruijnes.studenttracker.R;
-import com.bruijnes.studenttracker.StudentInformation;
+import com.bruijnes.studenttracker.activity.StudentInformationActivity;
 import com.bruijnes.studenttracker.model.Student;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -29,7 +29,7 @@ public class StudentAdapter extends FirebaseRecyclerAdapter<Student, StudentAdap
         Log.d(TAG, "kaas: " +student.toString());
         studentViewHolder.studentName.setText(student.fullName());
         studentViewHolder.studentName.setOnClickListener(view ->  {
-            Intent intent = new Intent(view.getContext(), StudentInformation.class);
+            Intent intent = new Intent(view.getContext(), StudentInformationActivity.class);
             intent.putExtra("student", student);
             view.getContext().startActivity(intent);
         });

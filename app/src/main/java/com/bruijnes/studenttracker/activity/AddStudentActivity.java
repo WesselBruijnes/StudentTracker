@@ -1,4 +1,4 @@
-package com.bruijnes.studenttracker;
+package com.bruijnes.studenttracker.activity;
 
 import static android.content.ContentValues.TAG;
 
@@ -10,7 +10,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bruijnes.studenttracker.R;
 import com.bruijnes.studenttracker.exception.StudentTrackerException;
+import com.bruijnes.studenttracker.helper.ActionBarHelper;
 import com.bruijnes.studenttracker.model.Student;
 import com.bruijnes.studenttracker.service.StudentService;
 import com.google.android.gms.common.util.Strings;
@@ -31,6 +33,8 @@ public class AddStudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
+
+        ActionBarHelper.setSubtitle(this, R.string.add_student_title);
 
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);

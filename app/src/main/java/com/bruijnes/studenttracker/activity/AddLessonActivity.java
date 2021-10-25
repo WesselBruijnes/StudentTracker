@@ -1,4 +1,4 @@
-package com.bruijnes.studenttracker;
+package com.bruijnes.studenttracker.activity;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bruijnes.studenttracker.R;
 import com.bruijnes.studenttracker.adapter.StudentLessonAdapter;
+import com.bruijnes.studenttracker.helper.ActionBarHelper;
 import com.bruijnes.studenttracker.model.Lesson;
 import com.bruijnes.studenttracker.model.Student;
 import com.bruijnes.studenttracker.service.LessonService;
@@ -28,6 +30,7 @@ public class AddLessonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lesson);
+        ActionBarHelper.setSubtitle(this, R.string.add_lesson_title);
 
         RecyclerView recyclerView = findViewById(R.id.studentLessonRecyclerview);
         saveBtn = findViewById(R.id.saveLessonButton);

@@ -1,4 +1,4 @@
-package com.bruijnes.studenttracker;
+package com.bruijnes.studenttracker.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.bruijnes.studenttracker.R;
 
 
 public class PaymentFragment extends Fragment {

@@ -10,22 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StudentTracker.NoActionBar">
+        android:theme="@style/Theme.StudentTracker">
         <activity
-            android:name=".AddLessonActivity"
+            android:name=".activity.AddLessonActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".StudentInformation"
+            android:name=".activity.StudentInformationActivity"
             android:exported="true" />
         <activity
-            android:name=".AddStudentActivity"
+            android:name=".activity.AddStudentActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
