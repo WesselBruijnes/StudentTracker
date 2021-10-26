@@ -12,12 +12,21 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.adapter.StudentPresenceAdapter;
 import com.bruijnes.studenttracker.helper.ActionBarHelper;
+import com.bruijnes.studenttracker.model.Lesson;
 import com.bruijnes.studenttracker.model.Student;
+import com.bruijnes.studenttracker.service.LessonService;
+
+import java.util.List;
 
 public class StudentInformationActivity extends AppCompatActivity {
+
+    private final LessonService lessonService = LessonService.getInstance();
 
     private Student student;
     private TextView studentName;
@@ -34,6 +43,7 @@ public class StudentInformationActivity extends AppCompatActivity {
 
         createActivityResultLauncher();
         getStudentFromIntent();
+        setupRecycleView();
 
         studentName = findViewById(R.id.studentInfoName);
         studentPhone = findViewById(R.id.studentInfoPhone);
@@ -69,6 +79,14 @@ public class StudentInformationActivity extends AppCompatActivity {
     private void getStudentFromIntent() {
         Intent thisIntent = getIntent();
         this.student = (Student) thisIntent.getExtras().getSerializable("student");
+    }
+
+    private void setupRecycleView() {
+        List<Lesson> lessons = lessonService.getLessonsForStudent(student);
+        RecyclerView recyclerView = findViewById(R.id.studentPresenceRecycleView);
+        StudentPresenceAdapter adapter = new StudentPresenceAdapter(this, lessons);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 

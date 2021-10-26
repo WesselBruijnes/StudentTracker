@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.Getter;
 
@@ -66,5 +67,9 @@ public class LessonService extends FirebaseService {
 
     public Lesson findLessonById(String lessonId) {
         return lessonList.stream().filter(lesson -> lesson.getLessonId().equals(lessonId)).findFirst().orElse(null);
+    }
+
+    public List<Lesson> getLessonsForStudent(Student student) {
+        return lessonList.stream().filter(lesson -> lesson.getStudent().contains(student)).collect(Collectors.toList());
     }
 }

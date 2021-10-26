@@ -1,8 +1,5 @@
 package com.bruijnes.studenttracker.adapter;
 
-import static android.content.ContentValues.TAG;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +21,6 @@ public class LessonAdapter extends FirebaseRecyclerAdapter<Lesson, com.bruijnes.
 
     @Override
     protected void onBindViewHolder(@NonNull LessonViewHolder lessonViewHolder, int i, @NonNull Lesson lesson) {
-        Log.d(TAG, "kaas: " +lesson.toString());
         lessonViewHolder.lessonDate.setText(lesson.getDate());
 //        lessonViewHolder.lessonDate.setOnClickListener(view -> {
 //                Intent intent = new Intent(view.getContext(), StudentInformation.class);
