@@ -1,5 +1,6 @@
 package com.bruijnes.studenttracker.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -9,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Lesson {
+public class Lesson implements Serializable {
     String lessonId;
     String date;
-    List<Student> student;
+    List<Student> students;
 }

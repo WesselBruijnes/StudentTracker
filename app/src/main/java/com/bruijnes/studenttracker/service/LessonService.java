@@ -70,6 +70,6 @@ public class LessonService extends FirebaseService {
     }
 
     public List<Lesson> getLessonsForStudent(Student student) {
-        return lessonList.stream().filter(lesson -> lesson.getStudent().contains(student)).collect(Collectors.toList());
+        return lessonList.stream().filter(lesson -> lesson.getStudents().contains(student)).collect(Collectors.toList());
     }
 }

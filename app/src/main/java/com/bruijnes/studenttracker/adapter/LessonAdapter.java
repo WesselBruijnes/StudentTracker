@@ -1,5 +1,6 @@
 package com.bruijnes.studenttracker.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.activity.LessonInformationActivity;
 import com.bruijnes.studenttracker.model.Lesson;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -22,11 +24,11 @@ public class LessonAdapter extends FirebaseRecyclerAdapter<Lesson, com.bruijnes.
     @Override
     protected void onBindViewHolder(@NonNull LessonViewHolder lessonViewHolder, int i, @NonNull Lesson lesson) {
         lessonViewHolder.lessonDate.setText(lesson.getDate());
-//        lessonViewHolder.lessonDate.setOnClickListener(view -> {
-//                Intent intent = new Intent(view.getContext(), StudentInformation.class);
-//                intent.putExtra("student", Lesson);
-//                view.getContext().startActivity(intent);
-//        });
+        lessonViewHolder.lessonDate.setOnClickListener(view -> {
+                Intent intent = new Intent(view.getContext(), LessonInformationActivity.class);
+                intent.putExtra("lesson", lesson);
+                view.getContext().startActivity(intent);
+        });
     }
 
     @NonNull

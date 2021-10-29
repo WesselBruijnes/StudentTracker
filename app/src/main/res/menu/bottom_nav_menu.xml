@@ -8,8 +8,4 @@
         android:id="@+id/lesson_menu"
         android:title="@string/lesson_menu"
         android:icon="@drawable/ic_lesson_foreground"/>
-    <item
-        android:id="@+id/payment_menu"
-        android:title="@string/payment_menu"
-        android:icon="@drawable/ic_payment_foreground"/>
 </menu>

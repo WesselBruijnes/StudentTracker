@@ -10,14 +10,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/studentLessonRecyclerview"
         android:layout_width="378dp"
-        android:layout_height="636dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/saveLessonButton"
+        android:layout_height="fill_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -43,6 +39,6 @@
         app:layout_constraintEnd_toStartOf="@+id/saveLessonButton"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent" />
->
+    >
 
 </androidx.constraintlayout.widget.ConstraintLayout>

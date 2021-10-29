@@ -1,6 +1,7 @@
 package com.bruijnes.studenttracker.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bruijnes.studenttracker.R;
+import com.bruijnes.studenttracker.activity.LessonInformationActivity;
 import com.bruijnes.studenttracker.model.Lesson;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class StudentPresenceAdapter  extends RecyclerView.Adapter<LessonAdapter.
     @Override
     public void onBindViewHolder(@NonNull LessonAdapter.LessonViewHolder holder, int position) {
         holder.lessonDate.setText(lessons.get(position).getDate());
+        holder.lessonDate.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), LessonInformationActivity.class);
+            intent.putExtra("lesson", this.lessons.get(position));
+            view.getContext().startActivity(intent);
+        });
     }
 
     @Override
