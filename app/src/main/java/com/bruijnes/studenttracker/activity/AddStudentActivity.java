@@ -72,6 +72,7 @@ public class AddStudentActivity extends AppCompatActivity {
             firstName.setText(editStudent.getFirstName());
             lastName.setText(editStudent.getLastName());
             phoneNumber.setText(editStudent.getPhoneNumber());
+            ActionBarHelper.setSubtitle(this, R.string.edit_student_title);
         }
     }
 
